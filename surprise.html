@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="th">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🎂 Happy 30th Birthday – ที่รัก 💕</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;600;700;900&family=Pacifico&family=Dancing+Script:wght@600;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="css/surprise.css">
+</head>
+
+<body>
+
+    <!-- ===== CANVAS (always on top) ===== -->
+    <canvas id="fireworksCanvas"></canvas>
+    <canvas id="confettiCanvas"></canvas>
+
+    <!-- ===== FLOATING HEARTS / STARS ===== -->
+    <div class="bg-floats" id="bgFloats"></div>
+
+    <!-- ===== MAIN CAKE SCREEN ===== -->
+    <div class="cake-screen" id="cakeScreen">
+
+        <!-- NAV -->
+        <nav class="top-nav">
+            <div class="nav-brand">💕 HBD</div>
+            <div class="nav-right">
+                <span class="nav-user" id="navUser">👋 JEN 💕</span>
+                <a href="#" onclick="sessionStorage.clear(); window.location.href='index.html'; return false;"
+                    class="nav-logout">ออก</a>
+            </div>
+        </nav>
+
+        <!-- TOP MESSAGE -->
+        <div class="top-msg" id="topMsg">
+            <p class="top-sub">สุขสันต์วันเกิดนะที่รัก 💖</p>
+            <h1 class="top-title">Happy<br><span class="age-30">30<sup>th</sup></span><br>Birthday!</h1>
+        </div>
+
+        <!-- THE BIG CAKE -->
+        <div class="cake-stage" id="cakeStage">
+
+            <!-- Candles -->
+            <div class="candles-wrap" id="candlesWrap">
+                <div class="candle-unit" data-i="0">
+                    <div class="flame-wrap" id="fw0">
+                        <div class="flame-outer"></div>
+                        <div class="flame-core"></div>
+                        <div class="flame-glow"></div>
+                    </div>
+                    <div class="candle-stick"></div>
+                </div>
+                <div class="candle-unit" data-i="1">
+                    <div class="flame-wrap" id="fw1">
+                        <div class="flame-outer"></div>
+                        <div class="flame-core"></div>
+                        <div class="flame-glow"></div>
+                    </div>
+                    <div class="candle-stick"></div>
+                </div>
+                <div class="candle-unit" data-i="2">
+                    <div class="flame-wrap" id="fw2">
+                        <div class="flame-outer"></div>
+                        <div class="flame-core"></div>
+                        <div class="flame-glow"></div>
+                    </div>
+                    <div class="candle-stick"></div>
+                </div>
+                <div class="candle-unit" data-i="3">
+                    <div class="flame-wrap" id="fw3">
+                        <div class="flame-outer"></div>
+                        <div class="flame-core"></div>
+                        <div class="flame-glow"></div>
+                    </div>
+                    <div class="candle-stick"></div>
+                </div>
+                <div class="candle-unit" data-i="4">
+                    <div class="flame-wrap" id="fw4">
+                        <div class="flame-outer"></div>
+                        <div class="flame-core"></div>
+                        <div class="flame-glow"></div>
+                    </div>
+                    <div class="candle-stick"></div>
+                </div>
+            </div>
+
+            <!-- Cake body -->
+            <div class="cake-body-wrap">
+                <!-- Layer 3 (top) -->
+                <div class="cake-layer layer-top">
+                    <div class="layer-frosting"></div>
+                    <div class="layer-drip d1"></div>
+                    <div class="layer-drip d2"></div>
+                    <div class="layer-drip d3"></div>
+                    <div class="layer-body">
+                        <span class="cake-deco">🌸</span>
+                        <span class="cake-text-small">ที่รัก</span>
+                        <span class="cake-deco">🌸</span>
+                    </div>
+                </div>
+                <!-- Layer 2 (mid) -->
+                <div class="cake-layer layer-mid">
+                    <div class="layer-frosting"></div>
+                    <div class="layer-drip d1"></div>
+                    <div class="layer-drip d2"></div>
+                    <div class="layer-drip d3"></div>
+                    <div class="layer-drip d4"></div>
+                    <div class="layer-body">
+                        <span class="cake-num">30</span>
+                    </div>
+                </div>
+                <!-- Layer 1 (bottom) -->
+                <div class="cake-layer layer-bot">
+                    <div class="layer-frosting"></div>
+                    <div class="layer-drip d1"></div>
+                    <div class="layer-drip d2"></div>
+                    <div class="layer-drip d3"></div>
+                    <div class="layer-drip d4"></div>
+                    <div class="layer-drip d5"></div>
+                    <div class="layer-body">
+                        <span class="cake-deco-sm">🎀</span>
+                        <span class="cake-deco-sm">💕</span>
+                        <span class="cake-deco-sm">🎀</span>
+                    </div>
+                </div>
+                <!-- Plate -->
+                <div class="cake-plate"></div>
+            </div>
+
+            <!-- Blow instruction -->
+            <div class="blow-instruction" id="blowInstruction">
+                <div class="blow-arrow">↑</div>
+                <p>แตะที่เทียนเพื่อเป่า 💨</p>
+            </div>
+
+            <!-- After blown -->
+            <div class="blown-msg" id="blownMsg" style="display:none;">
+                <p>🎉 ขอให้คำอธิษฐานเป็นจริงทุกอย่าง! ✨</p>
+            </div>
+        </div>
+
+        <!-- SCROLL DOWN HINT (shows after candles blown) -->
+        <div class="scroll-hint" id="scrollHint" style="opacity:0; pointer-events:none;">
+            <p>เลื่อนลงเพื่อดูของขวัญ 🎁</p>
+            <div class="scroll-arrow">↓</div>
+        </div>
+
+        <!-- MUSIC CONTROL -->
+        <button class="music-fab" id="musicFab" title="เปิด/ปิดเพลง">
+            <span class="music-fab-icon">🎵</span>
+        </button>
+        <audio id="bgAudio" loop>
+            <source src="sounds/ของขวัญ.mp3" type="audio/mpeg">
+        </audio>
+    </div>
+
+    <!-- ===== CONTENT SECTIONS ===== -->
+    <div class="content-sections" id="contentSections" style="display:none;">
+
+        <!-- LOVE MESSAGE -->
+        <section class="sec love-sec">
+            <div class="love-inner">
+                <div class="envelope" id="envelope">
+                    <div class="envelope-body">
+                        <div class="envelope-flap"></div>
+                        <div class="envelope-content" id="envelopeContent">
+                            <p class="letter-greeting">ถึง ที่รักของฉัน 💌</p>
+                            <p class="letter-body">วันนี้คือวันพิเศษที่สุดวันหนึ่งในชีวิตของเรา<br>เธออายุครบ <strong>30
+                                    ปี</strong> แล้ว 🌟<br><br>ขอให้ทุกก้าวที่เดินหน้าต่อจากนี้ เต็มไปด้วยความสุข
+                                ความสำเร็จ และความรักที่ฉันมีให้เธอเสมอ 💕<br><br>ขอบคุณที่เป็น "เธอ"
+                                ที่ทำให้ทุกวันของฉันสวยงาม ✨</p>
+                            <p class="letter-sign">ด้วยรัก ❤️</p>
+                        </div>
+                    </div>
+                </div>
+                <button class="open-letter-btn" id="openLetterBtn">เปิดซองจดหมาย 💌</button>
+            </div>
+        </section>
+
+
+        <!-- FOOTER -->
+        <footer class="site-footer">
+            <div class="footer-hearts" id="footerHearts"></div>
+            <p class="footer-big">💕 Happy 30th Birthday ที่รัก 💕</p>
+            <p class="footer-small">Made with ❤️ especially for you</p>
+            <a href="#" onclick="sessionStorage.clear(); window.location.href='index.html'; return false;"
+                class="footer-out">ออกจากระบบ</a>
+        </footer>
+
+    </div><!-- end content-sections -->
+
+    <script src="js/surprise.js"></script>
+</body>
+
+</html>

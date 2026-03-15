@@ -1,0 +1,59 @@
+
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🎂 Happy Birthday – Enter</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;600;700&family=Pacifico&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/login.css">
+</head>
+<body>
+    <div class="particles" id="particles"></div>
+    <div class="balloons"  id="balloons"></div>
+    <div class="emoji-rain" id="emojiRain"></div>
+
+    <div class="login-wrapper">
+        <div class="login-card" id="loginCard">
+
+            <div class="lock-icon">🔐</div>
+            <h1 class="brand-title">Happy Birthday!</h1>
+            <p class="brand-sub">มีเซอร์ไพร์สพิเศษรอคุณอยู่ข้างใน 🎁</p>
+
+            <div class="alert alert-error" id="loginError" style="display:none;">⚠️ ชื่อหรือรหัสไม่ถูกต้อง ลองอีกครั้งนะ 💌</div>
+
+            <form method="POST" id="loginForm">
+                <div class="input-group">
+                    <label for="username">👤 ชื่อ</label>
+                    <input type="text" id="username" name="username" placeholder="กรอกชื่อของคุณ"
+                           required autocomplete="username">
+                </div>
+                <div class="input-group">
+                    <label for="password">🔑 รหัสลับ</label>
+                    <div class="password-wrap">
+                        <input type="password" id="password" name="password"
+                               placeholder="กรอกรหัสลับ" required autocomplete="current-password">
+                        <button type="button" class="toggle-pw" id="togglePw">👁️</button>
+                    </div>
+                </div>
+                <button type="submit" class="btn-login" id="btnLogin">
+                    <span class="btn-text">เข้าร่วมเซอร์ไพร์ส 🎉</span>
+                    <span class="btn-loading" style="display:none;">กำลังโหลด...</span>
+                </button>
+            </form>
+
+            <div class="hint-box">
+                💡 <strong>Hint:</strong> ชื่อ: <code>JEN</code> · รหัส: <code>19march</code>
+            </div>
+        </div>
+    </div>
+
+    <button class="music-btn" id="musicBtn">🎵</button>
+    <audio id="bgMusic" loop preload="auto">
+        <source src="sounds/ของขวัญ.mp3" type="audio/mpeg">
+    </audio>
+    <script src="js/login.js"></script>
+</body>
+</html>

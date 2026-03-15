@@ -1,0 +1,117 @@
+
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🎈 Birthday Challenge – เจน 💕</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;600;700;900&family=Pacifico&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/game.css">
+</head>
+<body>
+
+<!-- Background canvas -->
+<canvas id="bgCanvas"></canvas>
+
+<!-- NAV -->
+<nav class="g-nav">
+    <span class="g-nav-brand">💕 HBD JEN</span>
+    <a href="#" onclick="sessionStorage.clear(); window.location.href='index.html'; return false;" class="g-nav-out">ออก</a>
+</nav>
+
+<!-- INTRO SCREEN -->
+<div class="screen" id="introScreen">
+    <div class="intro-inner">
+        <div class="intro-emoji" id="introEmoji">🎈</div>
+        <h1 class="intro-title">Birthday Challenge!</h1>
+        <p class="intro-name">สวัสดี JEN 💕 👋</p>
+        <p class="intro-desc">แตะลูกโป่ง <strong class="target-text">60 ลูก</strong> ให้หมด<br>เพื่อปลดล็อคสู่ของขวัญวันเกิด 🎂</p>
+        <div class="intro-rules">
+            <div class="rule"><span>🎈</span> แตะลูกโป่งก่อนหมดเวลา</div>
+            <div class="rule"><span>⚡</span> ลูกโป่งพิเศษ = คะแนน 2×</div>
+            <div class="rule"><span>💣</span> หลีกเลี่ยงระเบิด!</div>
+        </div>
+        <button class="intro-btn" id="startBtn">🎮 เริ่มเล่นเลย!</button>
+    </div>
+</div>
+
+<!-- GAME SCREEN -->
+<div class="screen" id="gameScreen" style="display:none;">
+    <div class="g-hud">
+        <div class="hud-box">
+            <div class="hud-val" id="hudPopped">0</div>
+            <div class="hud-lbl">แตกแล้ว</div>
+        </div>
+        <div class="hud-box hud-center">
+            <div class="hud-timer-ring">
+                <svg viewBox="0 0 80 80">
+                    <circle cx="40" cy="40" r="34" class="ring-bg"/>
+                    <circle cx="40" cy="40" r="34" class="ring-fill" id="ringFill"/>
+                </svg>
+                <div class="hud-secs" id="hudSecs">60</div>
+            </div>
+        </div>
+        <div class="hud-box">
+            <div class="hud-val" id="hudScore">0</div>
+            <div class="hud-lbl">คะแนน</div>
+        </div>
+    </div>
+
+    <!-- Progress bar -->
+    <div class="progress-wrap">
+        <div class="progress-label">🎈 <span id="progressTxt">0 / 60</span></div>
+        <div class="progress-track">
+            <div class="progress-fill" id="progressFill"></div>
+            <div class="progress-cake" id="progressCake">🎂</div>
+        </div>
+    </div>
+
+    <!-- Balloon arena -->
+    <div class="arena" id="arena">
+        <!-- Balloons injected by JS -->
+        <div class="arena-hint" id="arenaHint">แตะที่ลูกโป่ง! 💨</div>
+    </div>
+
+    <!-- Combo display -->
+    <div class="combo-display" id="comboDisplay" style="display:none;"></div>
+</div>
+
+<!-- WIN SCREEN -->
+<div class="screen" id="winScreen" style="display:none;">
+    <canvas id="winCanvas"></canvas>
+    <div class="win-inner">
+        <div class="win-emoji" id="winEmoji">🎂</div>
+        <h1 class="win-title">เยี่ยมมาก!</h1>
+        <p class="win-sub">คุณผ่านแล้ว! ของขวัญรอคุณอยู่ข้างใน 🎁</p>
+        <div class="win-stats">
+            <div class="ws-box"><div class="ws-val" id="finalScore">0</div><div class="ws-lbl">คะแนน</div></div>
+            <div class="ws-box"><div class="ws-val" id="finalPopped">0</div><div class="ws-lbl">ลูกโป่ง</div></div>
+            <div class="ws-box"><div class="ws-val" id="finalTime">0s</div><div class="ws-lbl">เวลาเหลือ</div></div>
+        </div>
+        <a href="unlock.php" class="win-btn" id="winBtn">เปิดของขวัญเลย 🎂</a>
+    </div>
+</div>
+
+<!-- LOSE SCREEN -->
+<div class="screen" id="loseScreen" style="display:none;">
+    <div class="lose-inner">
+        <div class="lose-emoji">⏰</div>
+        <h1 class="lose-title">หมดเวลาแล้ว!</h1>
+        <p class="lose-sub">แตกได้ <strong id="losePopped">0</strong> / 60 ลูก<br>ลองใหม่อีกครั้งนะ 💪</p>
+        <button class="retry-btn" id="retryBtn">🔄 เล่นใหม่</button>
+    </div>
+</div>
+
+<!-- Audio -->
+<audio id="bgMusic" loop preload="auto">
+    <source src="sounds/ของขวัญ.mp3" type="audio/mpeg">
+</audio>
+<audio id="popAudio" preload="auto">
+    <source src="sounds/pop.mp3" type="audio/mpeg">
+</audio>
+
+<script src="js/game.js"></script>
+</body>
+</html>
